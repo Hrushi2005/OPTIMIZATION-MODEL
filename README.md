@@ -19,4 +19,4 @@ Two constraints are defined:
 
 The model computes the optimal number of each cake type to produce while staying within these constraints. It displays the solution status, the quantities of cakes to produce, and the resulting maximum profit, demonstrating an effective resource allocation model.
 
-*output*:
+*output*: https://github.com/Hrushi2005/OPTIMIZATION-MODEL/issues/1#issue-2922413548
