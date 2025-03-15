@@ -1,0 +1,22 @@
+import pulp
+
+# Create a Model
+model = pulp.LpProblem("Maximize_Profit", pulp.LpMaximize)
+
+# Define Decision Variables
+choco_cake = pulp.LpVariable("Chocolate_Cake", lowBound=0, cat='Integer')
+vanilla_cake = pulp.LpVariable("Vanilla_Cake", lowBound=0, cat='Integer')
+
+#  Objective Function (Maximize Profit)
+model += 50 * choco_cake + 40 * vanilla_cake, "Total_Profit"
+
+#  Constraints
+model += 2 * choco_cake + 1 * vanilla_cake <= 10  # Flour constraint
+model += 1 * choco_cake + 1.5 * vanilla_cake <= 8  # Sugar constraint
+
+#  Solve the Model
+model.solve()
+print(f"Status: {pulp.LpStatus[model.status]}")
+print(f"Optimal Number of Chocolate Cakes to produce: {choco_cake.varValue}")
+print(f"Optimal Number of Vanilla Cakes to produce: {vanilla_cake.varValue}")
+print(f"Maximum Profit: ${pulp.value(model.objective)}")
